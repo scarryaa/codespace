@@ -3,5 +3,5 @@ export function IS_TEST_USER(handle?: string) {
 }
 
 export const BSKY_SERVICE = 'https://bsky.social';
-export const CODESTASH_SERVICE = 'https://codestash.social';
+export const CODESTASH_SERVICE = 'https://codestash.org';
 export const DEFAULT_SERVICE = BSKY_SERVICE;
