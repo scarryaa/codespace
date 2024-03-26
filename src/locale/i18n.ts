@@ -5,7 +5,8 @@ import { useEffect } from 'react';
 import { useLanguagePrefs } from '../state/preferences';
 
 export const dynamicActivate = async (locale: AppLanguage) => {
-	let mod: unknown;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	let mod: any;
 
 	switch (locale) {
 		case AppLanguage.en: {
@@ -14,7 +15,7 @@ export const dynamicActivate = async (locale: AppLanguage) => {
 		}
 	}
 
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
 	i18n.load(locale, mod.messages);
 	i18n.activate(locale);
 };

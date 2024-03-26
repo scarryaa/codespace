@@ -17,6 +17,7 @@ export const useServiceQuery = (serviceUrl: string) => {
 
 const isValidUrl = (url: string) => {
 	try {
+		// @ts-expect-error ignore unused var
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		const urlp = new URL(url);
 		return true;
