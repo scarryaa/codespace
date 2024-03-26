@@ -7,12 +7,13 @@ import { ComAtprotoServerDescribeServer } from '@atproto/api';
 import { logger } from '../../logger';
 import { FormContainer } from './FormContainer';
 import { t } from '@lingui/macro';
+import { createFullHandle } from '../../lib/strings/handles';
 type ServiceDescription = ComAtprotoServerDescribeServer.OutputSchema;
 
 export const LoginForm = ({
 	error,
 	serviceUrl,
-	// serviceDescription,
+	serviceDescription,
 	initialHandle,
 	setError,
 	// setServiceUrl,
@@ -39,6 +40,24 @@ export const LoginForm = ({
 	const handleLogin = async () => {
 		setIsProcessing(true);
 		try {
+			let fullIdent = identifier;
+			if (
+				!identifier.includes('@') && // not an email
+				!identifier.includes('.') && // not a domain
+				serviceDescription &&
+				serviceDescription.availableUserDomains.length > 0
+			) {
+				let matched = false;
+				for (const domain of serviceDescription.availableUserDomains) {
+					if (fullIdent.endsWith(domain)) {
+						matched = true;
+					}
+				}
+				if (!matched) {
+					fullIdent = createFullHandle(identifier, serviceDescription.availableUserDomains[0]);
+				}
+			}
+
 			await login({ identifier, service: serviceUrl, password });
 		} catch (error: any) {
 			setError(error.message);

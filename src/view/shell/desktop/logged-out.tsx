@@ -1,24 +1,12 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
 
 interface State {
 	showLoggedOut: boolean;
-	/**
-	 * Account did used to populate the login form when the logged out view is
-	 * shown.
-	 */
 	requestedAccountSwitchTo?: string;
 }
 
 interface Controls {
-	/**
-	 * Show or hide the logged out view.
-	 */
 	setShowLoggedOut: (show: boolean) => void;
-	/**
-	 * Shows the logged out view and drops the user into the login form using the
-	 * requested account.
-	 */
 	requestSwitchToAccount: (props: { requestedAccount?: string }) => void;
 	clearRequestedAccount: () => void;
 }

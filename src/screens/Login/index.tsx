@@ -89,6 +89,7 @@ export const Login = ({ onPressBack }: { onPressBack: () => void }) => {
 		case Forms.ChooseAccount:
 			title = t`Sign in`;
 			description = t`Select from an existing account`;
+			content = <div>account switch</div>;
 			break;
 	}
 
