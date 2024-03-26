@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { Hero } from '../../components/Hero/Hero';
 import { HomeMetrics } from '../com/Home';
 
