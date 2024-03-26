@@ -43,8 +43,8 @@ const AccountItem = ({
 				<img src={profile?.avatar} className="account-avatar" />
 				<span>
 					{isCurrentAccount
-						? t`Continue as ${account.handle} (currently signed in)`
-						: t`Sign in as ${account.handle}`}
+						? t`Continue as` + account.handle + t`(currently signed in)`
+						: t`Sign in as` + account.handle}
 				</span>
 			</Button>
 		</div>
