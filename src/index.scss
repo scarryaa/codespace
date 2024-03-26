@@ -22,6 +22,7 @@
   --border-dark: #{$border-dark};
   --text: #{$text};
   --text-light: #{$text-light};
+  --text-very-light: #{$text-very-light};
   --accent: #{$accent};
 }
 
@@ -33,5 +34,6 @@
   --border: #{$light-border};
   --border-dark: #{$light-border-dark};
   --text: #{$light-text};
+  --text-very-light: #{$light-text-very-light};
   --text-light: #{$light-text-light};
 }

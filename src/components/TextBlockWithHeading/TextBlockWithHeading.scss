@@ -1,0 +1,15 @@
+.text-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    .heading {
+        font-size: 36px;
+    }
+
+    .text {
+        margin-top: -1.5rem;
+        font-size: 48px;
+    }
+}
