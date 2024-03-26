@@ -51,13 +51,7 @@ const AccountItem = ({
 	);
 };
 
-export const ChooseAccountForm = ({
-	onSelectAccount,
-	onPressBack,
-}: {
-	onSelectAccount: (account: SessionAccount) => void;
-	onPressBack: () => void;
-}) => {
+export const ChooseAccountForm = ({ onSelectAccount }: { onSelectAccount: (account: SessionAccount) => void }) => {
 	const { accounts, currentAccount } = useSession();
 	const { initSession } = useSessionApi();
 	const { setShowLoggedOut } = useLoggedOutViewControls();

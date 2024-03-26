@@ -91,7 +91,7 @@ export const Login = ({ onPressBack }: { onPressBack: () => void }) => {
 		case Forms.ChooseAccount:
 			title = t`Sign in to CodeStash`;
 			description = t`Select from an existing account`;
-			content = <ChooseAccountForm onSelectAccount={onSelectAccount} onPressBack={onPressBack} />;
+			content = <ChooseAccountForm onSelectAccount={onSelectAccount} />;
 			break;
 	}
 

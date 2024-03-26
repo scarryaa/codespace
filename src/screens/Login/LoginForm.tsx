@@ -19,9 +19,8 @@ export const LoginForm = ({
 	serviceDescription,
 	initialHandle,
 	setError,
-	setServiceUrl,
-	onPressRetryConnect,
-	onPressBack,
+	// setServiceUrl,
+	// onPressRetryConnect,
 	onPressForgotPassword,
 }: {
 	error: string;

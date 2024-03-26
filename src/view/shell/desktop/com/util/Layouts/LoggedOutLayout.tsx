@@ -8,7 +8,6 @@ export const LoggedOutLayout = ({
 	description,
 	children,
 	scrollable,
-	style,
 }: PropsWithChildren<{
 	leadIn: ReactNode;
 	title: string;
