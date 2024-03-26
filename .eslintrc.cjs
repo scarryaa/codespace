@@ -18,6 +18,9 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    '@typescript-eslint/no-unsafe-call': "off",
+    "@typescript-eslint/no-misused-promises": "off",
+    '@typescript-eslint/no-empty-function': 'off',
     'prettier/prettier': ["error", { endOfLine: "auto" }]
   },
   parserOptions: {

@@ -1,0 +1,1 @@
+/*eslint-disable*/import type{Messages}from"@lingui/core";export const messages:Messages=JSON.parse("{\"nc4Wfd\":\"Unable to contact your service. Please check your Internet connection.\"}");

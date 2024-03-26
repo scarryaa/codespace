@@ -5,8 +5,7 @@ import './TopNav.scss';
 const ProfileButton: React.FC = () => {
 	const { currentAccount } = useSession();
 	const { isLoading, data: profile } = useProfileQuery({ did: currentAccount?.did });
-
-	return !isLoading && profile ? <div className="profile-button">{profile.avatar}</div> : <div>Placeholder</div>;
+	return !isLoading && profile ? <img src={profile.avatar} className="profile-button" /> : <div>Placeholder</div>;
 };
 
 export const TopNav: React.FC = () => {

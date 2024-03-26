@@ -5,7 +5,8 @@ export const saveLabelers = (did: string, value: string[]) => {
 	localStorage.setItem(`${PREFIX}:${did}`, JSON.stringify(value));
 };
 
-export const readLabelers = (did: string): Promise<string[] | undefined> => {
+// eslint-disable-next-line @typescript-eslint/require-await
+export const readLabelers = async (did: string): Promise<string[] | undefined> => {
 	const rawData = localStorage.getItem(`${PREFIX}:${did}`);
 	return rawData ? JSON.parse(rawData) : undefined;
 };

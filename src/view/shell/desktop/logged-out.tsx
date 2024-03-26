@@ -19,16 +19,7 @@ interface Controls {
 	 * Shows the logged out view and drops the user into the login form using the
 	 * requested account.
 	 */
-	requestSwitchToAccount: (props: {
-		/**
-		 * The did of the account to populate the login form with.
-		 */
-		requestedAccount?: string;
-	}) => void;
-	/**
-	 * Clears the requested account so that next time the logged out view is
-	 * show, no account is pre-populated.
-	 */
+	requestSwitchToAccount: (props: { requestedAccount?: string }) => void;
 	clearRequestedAccount: () => void;
 }
 

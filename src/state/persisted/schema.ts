@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { deviceLocales } from '../../platform/detection';
 
 const accountSchema = z.object({
 	service: z.string(),
@@ -22,6 +23,10 @@ export const schema = z.object({
 	onboarding: z.object({
 		step: z.string(),
 	}),
+	languagePrefs: z.object({
+		primaryLanguage: z.string(), // should move to server
+		appLanguage: z.string(),
+	}),
 });
 
 export const defaults: Schema = {
@@ -32,6 +37,10 @@ export const defaults: Schema = {
 	session: {
 		accounts: [],
 		currentAccount: undefined,
+	},
+	languagePrefs: {
+		primaryLanguage: deviceLocales[0] || 'en',
+		appLanguage: deviceLocales[0] || 'en',
 	},
 };
 export type Schema = z.infer<typeof schema>;

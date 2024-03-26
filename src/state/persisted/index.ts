@@ -4,6 +4,7 @@ import { Schema, defaults } from './schema';
 import * as store from './store';
 
 export type { Schema, PersistedAccount } from './schema';
+export { defaults } from './schema';
 
 let _state: Schema = defaults;
 const _emitter = new EventEmitter();
