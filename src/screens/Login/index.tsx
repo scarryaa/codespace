@@ -18,7 +18,7 @@ enum Forms {
 	PasswordUpdated,
 }
 
-export const Login = ({ onPressBack }: { onPressBack: () => void }) => {
+export const Login = () => {
 	const { accounts } = useSession();
 	const { requestedAccountSwitchTo } = useLoggedOutView();
 	const requestedAccount = accounts.find((acc) => acc.did === requestedAccountSwitchTo);
@@ -79,9 +79,7 @@ export const Login = ({ onPressBack }: { onPressBack: () => void }) => {
 							? () => {
 									gotoForm(Forms.ChooseAccount);
 								}
-							: () => {
-									onPressBack();
-								}
+							: () => {}
 					}
 					onPressForgotPassword={onPressForgotPassword}
 					onPressRetryConnect={() => refetchService}
@@ -101,7 +99,6 @@ export const Login = ({ onPressBack }: { onPressBack: () => void }) => {
 			leadIn={<Logo style={{ marginTop: 50, width: 200 }} />}
 			title={title}
 			description={description}
-			scrollable
 		>
 			<div key={currentForm}>{content}</div>
 		</LoggedOutLayout>

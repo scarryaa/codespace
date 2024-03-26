@@ -13,6 +13,7 @@ import { dynamicActivate } from './locale/i18n';
 import { AppLanguage } from './locale/languages';
 import { i18n } from '@lingui/core';
 import { en } from 'make-plural/plurals';
+import { Signup } from './screens/Signup';
 
 const InnerApp: React.FC = () => {
 	const { isInitialLoad, currentAccount } = useSession();
@@ -30,7 +31,8 @@ const InnerApp: React.FC = () => {
 			<TopNav />
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="/login" element={<Login onPressBack={() => {}} />} />
+				<Route path="/login" element={<Login />} />
+				<Route path="/sign-up" element={<Signup />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</Router>

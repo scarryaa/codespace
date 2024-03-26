@@ -61,7 +61,7 @@ export const TopNav: React.FC = () => {
 
 	useEffect(() => {
 		const path = location.pathname;
-		const title = path === '/' ? t`Dashboard` : t`${path.substr(1)}`;
+		const title = path === '/' ? t`Dashboard` : t``;
 		setPageTitle(title);
 	}, [location]);
 

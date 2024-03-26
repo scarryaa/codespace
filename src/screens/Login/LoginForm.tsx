@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useRef, useState } from 'react';
 import { useSessionApi } from '../../state/session';
 import { ComAtprotoServerDescribeServer } from '@atproto/api';
@@ -106,7 +106,7 @@ export const LoginForm = ({
 			<button className="forgot-password-button" onClick={onPressForgotPassword} disabled={isProcessing}>
 				{t({ message: 'Forgot password?' })}
 			</button>
-			{error && <div>{error}</div>}
+			{error && <div className="error-message">{error}</div>}
 		</FormContainer>
 	);
 };

@@ -1,0 +1,39 @@
+.email-label, .password-label, .hosting-provider-label {
+    margin-top: 0.4rem;
+}
+
+.email-field, .password-field, .hosting-provider-field, .user-handle-field {
+    margin-top: 0.2rem;
+}
+
+.password-field {
+    margin-top: 0.2rem;
+}
+
+.signup-button {
+    margin-top: 1rem;
+    background-color: var(--accent);
+}
+
+.back-button {
+    margin-top: 0.5rem;
+}
+
+.error-message {
+    margin-top: 1rem;
+    color: var(--red);
+    align-self: center;
+}
+
+.full-handle {
+    display: flex;
+    flex-direction: column;
+    margin-block: 1rem;
+}
+
+.requirements {
+    .requirements-icon {
+        margin-right: 0.8rem;
+        width: 16px;
+    }
+}
