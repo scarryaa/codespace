@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { SessionAccount, useSession } from '../../state/session';
+import { useSession } from '../../state/session';
 import { useLoggedOutView } from '../../view/shell/desktop/logged-out';
 import { BSKY_SERVICE } from '../../lib/constants';
 import { useServiceQuery } from '../../state/queries/service';
@@ -22,19 +22,19 @@ export const Login = ({ onPressBack }: { onPressBack: () => void }) => {
 	const requestedAccount = accounts.find((acc) => acc.did === requestedAccountSwitchTo);
 	const [error, setError] = useState<string>('');
 	const [serviceUrl, setServiceUrl] = useState<string>(requestedAccount?.service ?? BSKY_SERVICE);
-	const [initialHandle, setInitialHandle] = useState<string>(requestedAccount?.handle ?? '');
+	const [initialHandle] = useState<string>(requestedAccount?.handle ?? '');
 	const [currentForm, setCurrentForm] = useState<Forms>(
 		requestedAccount ? Forms.Login : accounts.length ? Forms.ChooseAccount : Forms.Login
 	);
 	const { data: serviceDescription, error: serviceError, refetch: refetchService } = useServiceQuery(serviceUrl);
 
-	const onSelectAccount = (account?: SessionAccount) => {
-		if (account?.service) {
-			setServiceUrl(account.service);
-		}
-		setInitialHandle(account?.handle ?? '');
-		setCurrentForm(Forms.Login);
-	};
+	// const onSelectAccount = (account?: SessionAccount) => {
+	// 	if (account?.service) {
+	// 		setServiceUrl(account.service);
+	// 	}
+	// 	setInitialHandle(account?.handle ?? '');
+	// 	setCurrentForm(Forms.Login);
+	// };
 
 	const gotoForm = (form: Forms) => {
 		setError('');

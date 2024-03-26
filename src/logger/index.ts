@@ -21,6 +21,7 @@ export class Logger {
 	constructor({
 		enabled = !env.IS_TEST,
 		level = env.LOG_LEVEL as LogLevel,
+		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 		debug = env.LOG_DEBUG || '',
 	}: {
 		enabled?: boolean;
