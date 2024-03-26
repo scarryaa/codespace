@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import * as persisted from './state/persisted';
 import { init as initPersistedState } from './state/persisted';
 import { useSession, useSessionApi } from './state/session';
+import { Home } from './view/screens/Home';
+import { NotFound } from './view/screens/NotFound';
 
 const InnerApp: React.FC = () => {
 	const { isInitialLoad, currentAccount } = useSession();
@@ -23,7 +25,9 @@ const InnerApp: React.FC = () => {
 		<Router key={currentAccount?.did}>
 			<TopNav />
 			<Routes>
+				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login onPressBack={() => {}} />} />
+				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</Router>
 	);

@@ -1,0 +1,27 @@
+// Overrides
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: var(--primary);
+  color: var(--text);
+}
+
+a {
+  font-weight: 500;
+  color: #0077ff;
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #0077ff;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+}

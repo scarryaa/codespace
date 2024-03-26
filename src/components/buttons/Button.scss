@@ -1,0 +1,10 @@
+.button {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    color: var(--text);
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: var(--text-light);
+    }
+}
