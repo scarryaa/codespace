@@ -3,13 +3,19 @@ import './OutlineButton.scss';
 import { CommonButtonProps } from './types';
 
 export const OutlineButton: React.FC<CommonButtonProps> = (props: CommonButtonProps) => {
-	if (!props.link) {
-		return <button className="outline-button">{props.label}</button>;
+	if (props.link) {
+		return (
+			<Link style={props.style} to={props.link} className={`outline-button-link ${props.className ?? ''}`}>
+				<button className="outline-button" onClick={props.onClick}>
+					{props.children ?? props.label}
+				</button>
+			</Link>
+		);
+	} else {
+		return (
+			<button style={props.style} className={`outline-button ${props.className ?? ''}`} onClick={props.onClick}>
+				{props.children ?? props.label}
+			</button>
+		);
 	}
-
-	return (
-		<Link to={props.link}>
-			<button className="outline-button">{props.label}</button>
-		</Link>
-	);
 };

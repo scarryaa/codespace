@@ -9,6 +9,10 @@ import { init as initPersistedState } from './state/persisted';
 import { useSession, useSessionApi } from './state/session';
 import { Home } from './view/screens/Home';
 import { NotFound } from './view/screens/NotFound';
+import { dynamicActivate } from './locale/i18n';
+import { AppLanguage } from './locale/languages';
+import { i18n } from '@lingui/core';
+import { en } from 'make-plural/plurals';
 
 const InnerApp: React.FC = () => {
 	const { isInitialLoad, currentAccount } = useSession();
@@ -37,12 +41,14 @@ function App() {
 	const [isReady, setReady] = useState(false);
 
 	useEffect(() => {
-		const init = () => {
+		const init = async () => {
+			i18n.loadLocaleData({ en: { plurals: en } });
+			await dynamicActivate(AppLanguage.en);
 			initPersistedState();
 			setReady(true);
 		};
 
-		init();
+		void init();
 	}, []);
 
 	if (!isReady) {

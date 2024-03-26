@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSession } from '../../state/session';
+import { SessionAccount, useSession } from '../../state/session';
 import { useLoggedOutView } from '../../view/shell/desktop/logged-out';
 import { BSKY_SERVICE } from '../../lib/constants';
 import { useServiceQuery } from '../../state/queries/service';
@@ -7,6 +7,8 @@ import { logger } from '../../logger';
 import LoginForm from './LoginForm';
 import { LoggedOutLayout } from '../../view/shell/desktop/com/util/Layouts/LoggedOutLayout';
 import { t } from '@lingui/macro';
+import { ChooseAccountForm } from './ChooseAccountForm';
+import { Logo } from '../../view/com/util/Logo';
 
 enum Forms {
 	Login,
@@ -22,19 +24,19 @@ export const Login = ({ onPressBack }: { onPressBack: () => void }) => {
 	const requestedAccount = accounts.find((acc) => acc.did === requestedAccountSwitchTo);
 	const [error, setError] = useState<string>('');
 	const [serviceUrl, setServiceUrl] = useState<string>(requestedAccount?.service ?? BSKY_SERVICE);
-	const [initialHandle] = useState<string>(requestedAccount?.handle ?? '');
+	const [initialHandle, setInitialHandle] = useState<string>(requestedAccount?.handle ?? '');
 	const [currentForm, setCurrentForm] = useState<Forms>(
 		requestedAccount ? Forms.Login : accounts.length ? Forms.ChooseAccount : Forms.Login
 	);
 	const { data: serviceDescription, error: serviceError, refetch: refetchService } = useServiceQuery(serviceUrl);
 
-	// const onSelectAccount = (account?: SessionAccount) => {
-	// 	if (account?.service) {
-	// 		setServiceUrl(account.service);
-	// 	}
-	// 	setInitialHandle(account?.handle ?? '');
-	// 	setCurrentForm(Forms.Login);
-	// };
+	const onSelectAccount = (account?: SessionAccount) => {
+		if (account?.service) {
+			setServiceUrl(account.service);
+		}
+		setInitialHandle(account?.handle ?? '');
+		setCurrentForm(Forms.Login);
+	};
 
 	const gotoForm = (form: Forms) => {
 		setError('');
@@ -87,14 +89,20 @@ export const Login = ({ onPressBack }: { onPressBack: () => void }) => {
 			);
 			break;
 		case Forms.ChooseAccount:
-			title = t`Sign in`;
+			title = t`Sign in to CodeStash`;
 			description = t`Select from an existing account`;
-			content = <div>account switch</div>;
+			content = <ChooseAccountForm onSelectAccount={onSelectAccount} onPressBack={onPressBack} />;
 			break;
 	}
 
 	return (
-		<LoggedOutLayout leadIn="" title={title} description={description} scrollable>
+		<LoggedOutLayout
+			style={{ maxWidth: 600, marginLeft: 'auto', marginRight: 'auto' }}
+			leadIn={<Logo style={{ marginTop: 50, width: 200 }} />}
+			title={title}
+			description={description}
+			scrollable
+		>
 			<div key={currentForm}>{content}</div>
 		</LoggedOutLayout>
 	);

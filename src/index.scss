@@ -10,19 +10,26 @@
   -moz-osx-font-smoothing: grayscale;
   color-scheme: light dark;
 
+  --white: #fff;
+  --black: #000;
   --primary: #{$primary};
   --secondary: #{$secondary};
   --secondary-highlight: #{$secondary-highlight};
+  --secondary-dark: #{$secondary-dark};
   --border: #{$border};
+  --border-dark: #{$border-dark};
   --text: #{$text};
   --text-light: #{$text-light};
+  --accent: #{$accent};
 }
 
 .light-mode {
   --primary: #{$light-primary};
   --secondary: #{$light-secondary};
+  --secondary-dark: #{$light-secondary-dark};
   --secondary-highlight: #{$light-secondary-highlight};
   --border: #{$light-border};
+  --border-dark: #{$light-border-dark};
   --text: #{$light-text};
-  --text-light: #{$light-text-light}
+  --text-light: #{$light-text-light};
 }

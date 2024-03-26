@@ -1,0 +1,34 @@
+.accounts-container {
+    margin-top: 0.5rem;  
+
+    .account-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+        .account-item-button {
+            width: 100%;
+            border-bottom: 1px solid var(--border-dark);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            transition: background-color 0.3s ease-in-out;
+            padding: 1rem;
+            border-radius: 0;
+            color: var(--white) !important;
+            background-color: var(--secondary-dark);
+    
+            &:hover {
+                background-color: var(--secondary);
+            }
+    
+            .account-avatar {
+                width: 50px;
+                border-radius: 50%;
+            }
+        }
+    }
+}

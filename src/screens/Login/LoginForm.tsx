@@ -8,6 +8,9 @@ import { logger } from '../../logger';
 import { FormContainer } from './FormContainer';
 import { t } from '@lingui/macro';
 import { createFullHandle } from '../../lib/strings/handles';
+import './LoginForm.scss';
+import { Button } from '../../components/buttons/Button';
+
 type ServiceDescription = ComAtprotoServerDescribeServer.OutputSchema;
 
 export const LoginForm = ({
@@ -16,8 +19,8 @@ export const LoginForm = ({
 	serviceDescription,
 	initialHandle,
 	setError,
-	// setServiceUrl,
-	// onPressRetryConnect,
+	setServiceUrl,
+	onPressRetryConnect,
 	onPressBack,
 	onPressForgotPassword,
 }: {
@@ -68,34 +71,41 @@ export const LoginForm = ({
 	};
 
 	return (
-		<FormContainer>
+		<FormContainer
+			style={{ backgroundColor: 'var(--secondary)', marginTop: '1rem', padding: '2rem 5rem', borderRadius: 8 }}
+		>
+			<label htmlFor="username" className="username-label">
+				Username
+			</label>
 			<input
+				id="username"
+				className="username-field"
 				type="text"
 				value={identifier}
 				onChange={(e) => {
 					setIdentifier(e.target.value);
 				}}
-				placeholder={t({ message: 'HHello' })}
 				disabled={isProcessing}
 			/>
+			<label className="password-label" htmlFor="password">
+				Password
+			</label>
 			<input
+				className="password-field"
 				type="password"
+				id="password"
 				value={password}
 				onChange={(e) => {
 					setPassword(e.target.value);
 				}}
-				placeholder={t({ message: 'Password' })}
 				ref={passwordInputRef}
 				disabled={isProcessing}
 			/>
-			<button onClick={handleLogin}>
+			<Button className="login-button" onClick={handleLogin}>
 				{isProcessing ? t({ message: 'Logging In' }) : t({ message: 'Log in' })}
-			</button>
-			<button onClick={onPressForgotPassword} disabled={isProcessing}>
+			</Button>
+			<button className="forgot-password-button" onClick={onPressForgotPassword} disabled={isProcessing}>
 				{t({ message: 'Forgot password?' })}
-			</button>
-			<button onClick={onPressBack} disabled={isProcessing}>
-				{t({ message: 'Back' })}
 			</button>
 			{error && <div>{error}</div>}
 		</FormContainer>

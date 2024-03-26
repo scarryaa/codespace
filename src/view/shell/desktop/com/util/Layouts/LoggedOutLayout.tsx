@@ -1,5 +1,6 @@
-import { PropsWithChildren } from 'react';
+import { CSSProperties, PropsWithChildren, ReactNode } from 'react';
 import { useWebMediaQueries } from '../../../../../../lib/hooks/useWebMediaQueries';
+import './LoggedOutLayout.scss';
 
 export const LoggedOutLayout = ({
 	leadIn,
@@ -7,8 +8,14 @@ export const LoggedOutLayout = ({
 	description,
 	children,
 	scrollable,
-}: PropsWithChildren<{ leadIn: string; title: string; description: string; scrollable?: boolean }>) => {
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+	style,
+}: PropsWithChildren<{
+	leadIn: ReactNode;
+	title: string;
+	description: string;
+	scrollable?: boolean;
+	style?: CSSProperties;
+}>) => {
 	const { isMobile } = useWebMediaQueries();
 
 	if (isMobile) {
@@ -18,11 +25,11 @@ export const LoggedOutLayout = ({
 	}
 
 	return (
-		<div>
-			<span>{leadIn}</span>
-			<span>{title}</span>
-			<span>{description}</span>
-			<div>{children}</div>
+		<div className="logged-out-layout">
+			{leadIn}
+			<span className="title">{title}</span>
+			<span className="description">{description}</span>
+			{children}
 		</div>
 	);
 };
